@@ -1,0 +1,42 @@
+.products {
+    padding: 30px 50px;
+    display: flex;
+
+    .left {
+        flex: 1;
+        // position: sticky; to use this, must set height and use position (like top: )
+        position: sticky;
+        height: 100%;
+        top: 50px;
+
+        .filterItem {
+            margin-bottom: 30px;
+
+            h2 {
+                font-weight: 400;
+                margin-bottom: 30px;
+            }
+
+            .inputItem {
+                margin-bottom: 10px;
+
+                label {
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+
+    .right {
+        flex: 3;
+
+        .catImg {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            object-position: 50% 70%;
+            margin-bottom: 50px;
+
+        }
+    }
+}
