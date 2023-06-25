@@ -15,7 +15,7 @@ const Category = () => {
         <div className="row">
           <img src="https://images.unsplash.com/photo-1619785292559-a15caa28bde6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80" alt="" />
           <button>
-            <Link to="/products/1" className="link">
+            <Link to="/products/2" className="link">
               Women
             </Link>
           </button>
@@ -58,8 +58,8 @@ const Category = () => {
           <div className="row">
             <img src="https://images.unsplash.com/photo-1570545917537-873e36d4f64a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="" />
             <button>
-              <Link to="/products/1" className="link">
-                Shoes
+              <Link to="/products/3" className="link">
+                Children
               </Link>
             </button>
           </div>
