@@ -1,4 +1,4 @@
-.products {
+.store {
     padding: 30px 50px;
     display: flex;
 
@@ -28,15 +28,15 @@
     }
 
     .right {
-        width: 100%;
-        height: auto;
         flex: 3;
 
         .catImg {
             width: 100%;
-            height: 60vh;
+            height: 300px;
             object-fit: cover;
+            object-position: 50% 70%;
             margin-bottom: 50px;
+
         }
     }
 }
