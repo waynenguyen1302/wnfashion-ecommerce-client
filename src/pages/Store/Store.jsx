@@ -28,7 +28,6 @@ const Products = () => {
     setSelectedSubCats(isChecked ? [...selectedSubCats, value] : selectedSubCats.filter((item) => item !== value))
 
   }
-  console.log(data)
 
   return (
     <div className='store'>

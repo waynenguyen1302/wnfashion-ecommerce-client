@@ -28,7 +28,6 @@ const Products = () => {
         const res = await makeRequest.get(`/categories/${catId}?populate=*`);
         const categoryData = res.data;
         setCategoryImage(`${process.env.REACT_APP_UPLOAD_URL + categoryData.data?.attributes?.img?.data.attributes.url}`);
-        console.log(categoryData)
       } catch (error) {
         console.error(error);
       }

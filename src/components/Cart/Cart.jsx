@@ -7,6 +7,7 @@ import { makeRequest } from "../../makeRequest";
 import {loadStripe } from '@stripe/stripe-js';
 
 
+
 const Cart = () => {
     const products = useSelector(state => state.cart.products);
     const dispatch = useDispatch();
@@ -19,24 +20,33 @@ const Cart = () => {
         return total.toFixed(2);
     }
 
-    // conmfigure stripe payment
+    // configure stripe payment
 
     const stripePromise = loadStripe('pk_test_51MEf1tGnzp5kBzLMoTqMXMEpl35gtJxVbw5HJfa0QFPag5lQM8cMwh9kE26vwrWOba6YP7t7NJL6ozdNLVK8funO00Uid45x9B')
     const handlePayment = async () => {
+        console.log('handling payment')
         try {
           const stripe = await stripePromise;
           const res = await makeRequest.post("/orders", {
             products,
           });
-          await stripe.redirectToCheckout({
-            sessionId: res.data.stripeSession.id,
+          const result = await stripe.redirectToCheckout({
+            sessionId: res.data.id,
           });
+
+          if (result.error) {
+            // Handle any errors that might occur
+            console.log(result.error.message);
+          } else {
+            // Reset the cart after a successful payment
+            dispatch(resetCart())
+            console.log('cart reset')
+          }
     
         } catch (err) {
           console.log(err);
         }
-    };
-    
+    };  
 
   return (
     <div className='cart'>
@@ -55,7 +65,7 @@ const Cart = () => {
         ))}  
         <div className="total">
             <span>SUBTOTAL</span>
-            <span>${totalPrice( )}</span>
+            <span>${totalPrice()}</span>
         </div>
         <button onClick={handlePayment}>PROCEED TO CHECK OUT</button> 
         <span className="reset" onClick={() => dispatch(resetCart())}>Empty Cart</span>     
