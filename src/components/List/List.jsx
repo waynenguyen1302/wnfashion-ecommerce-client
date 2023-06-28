@@ -9,10 +9,11 @@ const List = ({subCats, maxPrice, sort, catId, fetchAll }) => {
         //   (item) => `&[filters][sub_categories][id][$eq]=${item}`
         // )}&[filters][price][$lte]=${maxPrice}&sort=price:${sort}`
     //   );
+    const url = '';
     if (fetchAll) {
-      const url = `/products?populate=*`;
+      url = `/products?populate=*`;
     } else {
-      const url = `/products?populate=*&[filters][categories][id]=${catId}${subCats.map(
+      url = `/products?populate=*&[filters][categories][id]=${catId}${subCats.map(
         (item) => `&[filters][sub_categories][id][$eq]=${item}`
       )}&[filters][price][$lte]=${maxPrice}&sort=price:${sort}`
     }
