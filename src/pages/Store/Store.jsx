@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './Store.scss'
 import List from '../../components/List/List'
 import { Link, useParams } from 'react-router-dom'
@@ -19,15 +19,6 @@ const Products = () => {
 
   const [selectedSubCats, setSelectedSubCats] = useState([])
 
-  const handleChange = (e) => {
-    const value = e.target.value;
-    const isChecked = e.target.checked;
-
-    //add the checked sub categories to array
-    //filter out the sub categories when removed
-    setSelectedSubCats(isChecked ? [...selectedSubCats, value] : selectedSubCats.filter((item) => item !== value))
-
-  }
 
   return (
     <div className='store'>
@@ -36,7 +27,7 @@ const Products = () => {
           <h2>Shop By</h2>
           {data?.map((item) => (
             <div className="inputItem" key={item.id}>
-              <Link className='link' to={`/products/${item.id}`}>{item.attributes.title}</Link>
+              <Link className='link' to={`/products/${item.id}?populate=*`}>{item.attributes.title}</Link>
             </div>
           ))}          
         </div>
