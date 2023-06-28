@@ -9,19 +9,12 @@ const List = ({subCats, maxPrice, sort, catId, fetchAll }) => {
         //   (item) => `&[filters][sub_categories][id][$eq]=${item}`
         // )}&[filters][price][$lte]=${maxPrice}&sort=price:${sort}`
     //   );
-    const url = '';
-    if (fetchAll) {
-      url = `/products?populate=*`;
-    } else {
-      url = `/products?populate=*&[filters][categories][id]=${catId}${subCats.map(
-        (item) => `&[filters][sub_categories][id][$eq]=${item}`
-      )}&[filters][price][$lte]=${maxPrice}&sort=price:${sort}`
-    }
-    // const url = fetchAll
-    // ? `/products?populate=*`
-    // : `/products?populate=*&[filters][categories][id]=${catId}${subCats.map(
-    //   (item) => `&[filters][sub_categories][id][$eq]=${item}`
-    // )}&[filters][price][$lte]=${maxPrice}&sort=price:${sort}`;
+
+    const url = fetchAll
+    ? `/products?populate=*`
+    : `/products?populate=*&[filters][categories][id]=${catId}${subCats.map(
+      (item) => `&[filters][sub_categories][id][$eq]=${item}`
+    )}&[filters][price][$lte]=${maxPrice}&sort=price:${sort}`;
 
   const { data, loading, error } = useFetch(url);
 
