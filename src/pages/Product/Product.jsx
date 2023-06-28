@@ -26,8 +26,8 @@ const Product = () => {
       (<>
         <div className="left">
           <div className="images">
-            <img src={process.env.REACT_APP_UPLOAD_URL + data?.attributes?.img?.data?.attributes?.url} alt="" onClick={(e) => setSelectedImage("img")}/>
-            <img src={process.env.REACT_APP_UPLOAD_URL + data?.attributes?.img2?.data?.attributes?.url} alt="" onClick={(e) => setSelectedImage("img2")}/>
+            <img src={process.env.REACT_APP_UPLOAD_URL + data?.attributes.img?.data?.attributes?.url} alt="" onClick={(e) => setSelectedImage("img")}/>
+            <img src={process.env.REACT_APP_UPLOAD_URL + data?.attributes.img2?.data?.attributes?.url} alt="" onClick={(e) => setSelectedImage("img2")}/>
           </div>
           <div className="mainImg">
             <img src={process.env.REACT_APP_UPLOAD_URL + data?.attributes[selectedImage]?.data?.attributes?.url} alt="" />
@@ -50,7 +50,7 @@ const Product = () => {
               title: data.attributes.title,
               desc: data.attributes.desc,
               price: data.attributes.price,
-              img: data?.attributes?.img?.data?.attributes?.url,
+              img: data.attributes.img.data.attributes.url,
               quantity,            
             })
           )}>

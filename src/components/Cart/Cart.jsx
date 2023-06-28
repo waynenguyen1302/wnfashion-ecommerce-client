@@ -53,14 +53,14 @@ const Cart = () => {
         <h1>Your Cart</h1>
         {products?.map((item) => (
             <div className="item" key={item.id}>
-                <img src={process.env.REACT_APP_UPLOAD_URL + item.img} alt="" />
-                <div className="details">
-                    <h1>{item.title}</h1>
-                    {/* subString to limit long description */}
-                    <p>{item.desc?.substring(0,100)}</p>
-                    <div className="price">{item.quantity} x ${item.price}</div>
+                <img src={process.env.REACT_APP_UPLOAD_URL + item.img } alt="" />
+                <div div className="details">
+                  <h1>{item.title}</h1>
+                  {/* subString to limit long description */}
+                  <p>{item.desc?.substring(0,100)}</p>
+                  <div className="price">{item.quantity} x ${item.price}</div>
                 </div>
-                <DeleteOutlinedIcon className='delete' onClick={() => dispatch(removeItem(item.id))} />
+                  <DeleteOutlinedIcon className='delete' onClick={() => dispatch(removeItem(item.id))} />
             </div>
         ))}  
         <div className="total">

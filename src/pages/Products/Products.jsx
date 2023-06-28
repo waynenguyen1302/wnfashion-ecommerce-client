@@ -54,9 +54,9 @@ const Products = () => {
           <h2>Product Categories</h2>
           {data?.map((item) => (
             <div className="inputItem" key={item.id}>
-            <input type="checkbox" name="" id={item.id} value={item.id} onChange={handleChange} />
-            <label htmlFor={item.id}>{item.attributes.title}</label>
-          </div>
+              <input type="checkbox" name="" id={item.id} value={item.id} onChange={handleChange} />
+              <label htmlFor={item.id}>{item.attributes.title}</label>
+            </div>
           ))}
           
         </div>
