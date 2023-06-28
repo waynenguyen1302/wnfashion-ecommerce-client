@@ -29,7 +29,7 @@ const Products = () => {
         const categoryData = res.data;
         setCategoryImage(`${process.env.REACT_APP_UPLOAD_URL + categoryData.data?.attributes?.img?.data.attributes.url}`);
       } catch (error) {
-        console.error(error);
+        console.log(error);
       }
     };
 
