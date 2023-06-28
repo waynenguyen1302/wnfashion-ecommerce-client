@@ -50,7 +50,7 @@ const Product = () => {
               title: data.attributes.title,
               desc: data.attributes.desc,
               price: data.attributes.price,
-              img: data.attributes.img.data.attributes.url,
+              img: data?.attributes?.img?.data?.attributes?.url,
               quantity,            
             })
           )}>
