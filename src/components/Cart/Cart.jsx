@@ -44,7 +44,7 @@ const Cart = () => {
           }
     
         } catch (err) {
-          console.log(err);
+          console.log(err.response.data);
         }
     };  
 
