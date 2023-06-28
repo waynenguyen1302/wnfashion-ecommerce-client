@@ -12,11 +12,16 @@ const Layout = () => {
   return (
     <div className="app">
       <Navbar />
-      <Outlet />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products/:id" element={<Products />} />
+        <Route path="/product/:id" element={<Product />} />
+        <Route path="/categories" element={<Store />} />
+      </Routes>
       <Footer />
     </div>
-  )
-}
+  );
+};
 
 // const router = createBrowserRouter([
 //   {
@@ -47,17 +52,9 @@ const Layout = () => {
 
 function App() {
   return (
-    // <div>
-    //   <RouterProvider router={router} />
-    // </div>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="/products/:id" element={<Products />} />
-          <Route path="/product/:id" element={<Product />} />
-          <Route path="/categories" element={<Store />} />
-        </Route>
+        <Route path="/" element={<Layout />} />
       </Routes>
     </BrowserRouter>
   );
