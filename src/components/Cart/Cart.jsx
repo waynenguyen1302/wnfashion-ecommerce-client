@@ -22,7 +22,7 @@ const Cart = () => {
 
     // configure stripe payment
 
-    const stripePromise = loadStripe('pk_test_51MEf1tGnzp5kBzLMoTqMXMEpl35gtJxVbw5HJfa0QFPag5lQM8cMwh9kE26vwrWOba6YP7t7NJL6ozdNLVK8funO00Uid45x9B')
+    const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY)
     const handlePayment = async () => {
         console.log('handling payment')
         try {
