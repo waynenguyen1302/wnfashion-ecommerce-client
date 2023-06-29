@@ -72,3 +72,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 #TODO:
     Products/ Categories Page: sort items randomly
     Modify quantity in cart
+#Problem with page only load once: read render deployment docs https://render.com/docs/deploy-create-react-app
