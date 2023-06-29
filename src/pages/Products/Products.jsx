@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import List from "../../components/List/List";
 import useFetch from "../../hooks/useFetch";
@@ -8,12 +8,17 @@ import "./Products.scss";
 const Products = () => {
   const catId = parseInt(useParams().id);
   const [maxPrice, setMaxPrice] = useState(1000);
-  const [sort, setSort] = useState(null);
+  const [selectedPrice, setSelectedPrice] = useState(1000)
+  const [sort, setSort] = useState("desc");
   const [selectedSubCats, setSelectedSubCats] = useState([]);
 
   const { data, loading, error } = useFetch(
     `/products?[filters][categories][id][$eq]=${catId}`
   );
+
+  const handlePriceFilter = () => {
+    setMaxPrice(selectedPrice)
+  }
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -25,6 +30,9 @@ const Products = () => {
         : selectedSubCats.filter((item) => item !== value)
     );
   };
+
+  
+  
 
   return (
     <div className="products">
@@ -50,10 +58,11 @@ const Products = () => {
             <input
               type="range"
               min={0}
-              max={1000}
-              onChange={(e) => setMaxPrice(e.target.value)}
-            />
-            <span>{maxPrice}</span>
+              max={1000}  
+              onChange={(e) => setSelectedPrice(e.target.value)}            
+            />            
+            <span>{selectedPrice}</span>
+            <button onClick={handlePriceFilter}>Apply</button>
           </div>
         </div>
         <div className="filterItem">
