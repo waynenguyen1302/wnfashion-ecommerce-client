@@ -25,7 +25,7 @@ const Products = () => {
   useEffect(() => {
     const fetchCategoryImage = async () => {
       try {
-        const res = await makeRequest.get(`/categories/${catId}?populate=*`);
+        const res = await makeRequest.get(`/products/${catId}?populate=*`);
         const categoryData = res.data;
         setCategoryImage(`${process.env.REACT_APP_UPLOAD_URL + categoryData.data?.attributes?.img?.data.attributes.url}`);
       } catch (error) {
