@@ -16,7 +16,7 @@ const Product = () => {
 
 
   const {data, loading, error} = useFetch(
-    `/products/${id}?populate=*`
+    `$${process.env.REACT_APP_API_URL}/products/${id}?populate=*`
   );
 
   const dispatch = useDispatch();
