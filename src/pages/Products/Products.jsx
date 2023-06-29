@@ -12,7 +12,7 @@ const Products = () => {
   const [selectedSubCats, setSelectedSubCats] = useState([]);
 
   const { data, loading, error } = useFetch(
-    `/sub-categories?[filters][categories][id][$eq]=${catId}`
+    `/products?[filters][categories][id][$eq]=${catId}`
   );
 
   const handleChange = (e) => {
