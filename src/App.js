@@ -1,11 +1,11 @@
-import { createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
-import Home from "./pages/Home/Home";
-import Products from "./pages/Products/Products";
-import Product from "./pages/Product/Product";
+import { Children } from "react";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
-import Store from "./pages/Store/Store"
-import "./App.scss"
+import Home from "./pages/Home/Home";
+import Product from "./pages/Product/Product";
+import Products from "./pages/Products/Products";
+import "./app.scss"
 
 const Layout = () => {
   return (
@@ -14,35 +14,33 @@ const Layout = () => {
       <Outlet />
       <Footer />
     </div>
-  )
-}
+  );
+};
 
 const router = createBrowserRouter([
   {
-    path:"/",
+    path: "/",
     element: <Layout />,
     children: [
       {
-        path:"/",
-        element: <Home />
+        path: "/",
+        element: <Home />,
       },
       {
-        path:"/categories/:id",
-        element: <Products />
+        path: "/products/:id",
+        element: <Products />,
       },
       {
-        path:"/products/:id",
-        element: <Product />
+        path: "/product/:id",
+        element: <Product />,
       },
       {
-        path:"/categories",
-        element: <Store />
+        path: "/products",
+        element: <Store />,
       },
-    ]
+    ],
   },
-  
-  
-])
+]);
 
 function App() {
   return (
