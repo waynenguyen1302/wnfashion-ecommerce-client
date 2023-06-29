@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'
 import './Product.scss'
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
@@ -14,6 +14,7 @@ const Product = () => {
   const [selectedImage, setSelectedImage] = useState("img");
   const [quantity, setQuantity] = useState(1)
 
+
   const {data, loading, error} = useFetch(
     `/products/${id}?populate=*`
   );
@@ -26,17 +27,17 @@ const Product = () => {
       (<>
         <div className="left">
           <div className="images">
-            <img src={process.env.REACT_APP_UPLOAD_URL + data?.attributes.img?.data?.attributes?.url} alt="" onClick={(e) => setSelectedImage("img")}/>
-            <img src={process.env.REACT_APP_UPLOAD_URL + data?.attributes.img2?.data?.attributes?.url} alt="" onClick={(e) => setSelectedImage("img2")}/>
+            <img src={process.env.REACT_APP_UPLOAD_URL + data?.attributes?.img?.data?.attributes?.url} alt="" onClick={(e) => setSelectedImage("img")}/>
+            <img src={process.env.REACT_APP_UPLOAD_URL + data?.attributes?.img2?.data?.attributes?.url} alt="" onClick={(e) => setSelectedImage("img2")}/>
           </div>
           <div className="mainImg">
             <img src={process.env.REACT_APP_UPLOAD_URL + data?.attributes[selectedImage]?.data?.attributes?.url} alt="" />
           </div>
         </div>
         <div className="right">
-          <h1>{data?.attributes.title}</h1>
-          <span className='price'>${data?.attributes.price}</span>
-          <p>{data?.attributes.desc}</p>
+          <h1>{data?.attributes?.title}</h1>
+          <span className='price'>${data?.attributes?.price}</span>
+          <p>{data?.attributes?.desc}</p>
           <div className="quantity">
             <button onClick={() => setQuantity((prev) => prev === 1 ? 1 : prev - 1)}>-</button>
             {quantity}
