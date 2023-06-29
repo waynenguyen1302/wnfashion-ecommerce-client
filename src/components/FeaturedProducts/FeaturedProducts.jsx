@@ -27,7 +27,8 @@ const FeaturedProducts = ({type}) => {
                 "Loading" 
                 : data?.map(item => (
                     <Card item={item} key={item.id} />
-                )))}
+                )))                
+            }
         </div>
     </div>
   )

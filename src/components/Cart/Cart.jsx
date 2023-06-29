@@ -54,7 +54,7 @@ const Cart = () => {
         {products?.map((item) => (
             <div className="item" key={item.id}>
                 <img src={process.env.REACT_APP_UPLOAD_URL + item.img } alt="" />
-                <div div className="details">
+                <div className="details">
                   <h1>{item.title}</h1>
                   {/* subString to limit long description */}
                   <p>{item.desc?.substring(0,100)}</p>
