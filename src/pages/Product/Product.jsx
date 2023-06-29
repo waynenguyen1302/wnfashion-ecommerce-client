@@ -31,7 +31,7 @@ const Product = () => {
             <img src={process.env.REACT_APP_UPLOAD_URL + data?.attributes?.img2?.data?.attributes?.url} alt="" onClick={(e) => setSelectedImage("img2")}/>
           </div>
           <div className="mainImg">
-            <img src={process.env.REACT_APP_UPLOAD_URL + data?.attributes[selectedImage]?.data?.attributes?.url} alt="" />
+            <img src={process.env.REACT_APP_UPLOAD_URL + data?.attributes?.[selectedImage]?.data?.attributes?.url} alt="" />
           </div>
         </div>
         <div className="right">
