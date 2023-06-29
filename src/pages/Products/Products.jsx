@@ -16,7 +16,7 @@ const Products = () => {
 
   const [sort, setSort] = useState("asc")
 
-  const {data, loading, error} = useFetch(`/categories?populate=*&[filters][categories][id][$eq]=${catId}`)
+  const {data, loading, error} = useFetch(`/sub-categories?populate=*&[filters][categories][id][$eq]=${catId}`)
 
   const [selectedSubCats, setSelectedSubCats] = useState([])
 
@@ -34,7 +34,7 @@ const Products = () => {
     };
 
     fetchCategoryImage();
-  }, [catId]);
+  }, []);
 
   const handleChange = (e) => {
     const value = e.target.value;
