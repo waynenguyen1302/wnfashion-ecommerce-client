@@ -4,7 +4,7 @@ import './Card.scss'
 
 const Card = ({item}) => {
   return (
-    <Link className='link' to={`/products/${item.id}`}>
+    <Link className='link' to={`/product/${item.id}`}>
         <div className='card'>
             <div className="image">
                 {item?.attributes.isNew && <span>New Season</span>}
