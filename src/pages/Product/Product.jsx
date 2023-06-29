@@ -22,7 +22,7 @@ const Product = () => {
 
   return (
     <div className='product'>
-      {loading ? "Loading" :
+      {loading || data == null ? "Loading" :
       (<>
         <div className="left">
           <div className="images">
