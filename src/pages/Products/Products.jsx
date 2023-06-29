@@ -1,115 +1,95 @@
 import React from "react";
 import { useState } from "react";
-import "./Product.scss";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import BalanceIcon from "@mui/icons-material/Balance";
-import useFetch from "../../hooks/useFetch";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../redux/cartReducer";
+import List from "../../components/List/List";
+import useFetch from "../../hooks/useFetch";
+import "./Products.scss";
 
-const Product = () => {
-  const id = useParams().id;
-  const [selectedImg, setSelectedImg] = useState("img");
-  const [quantity, setQuantity] = useState(1);
+const Products = () => {
+  const catId = parseInt(useParams().id);
+  const [maxPrice, setMaxPrice] = useState(1000);
+  const [sort, setSort] = useState(null);
+  const [selectedSubCats, setSelectedSubCats] = useState([]);
 
-  const dispatch = useDispatch();
-  const { data, loading, error } = useFetch(`/products/${id}?populate=*`);
+  const { data, loading, error } = useFetch(
+    `/sub-categories?[filters][categories][id][$eq]=${catId}`
+  );
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    const isChecked = e.target.checked;
+
+    setSelectedSubCats(
+      isChecked
+        ? [...selectedSubCats, value]
+        : selectedSubCats.filter((item) => item !== value)
+    );
+  };
 
   return (
-    <div className="product">
-      {loading ? (
-        "loading"
-      ) : (
-        <>
-          <div className="left">
-            <div className="images">
-              <img
-                src={
-                  process.env.REACT_APP_UPLOAD_URL +
-                  data?.attributes?.img?.data?.attributes?.url
-                }
-                alt=""
-                onClick={(e) => setSelectedImg("img")}
+    <div className="products">
+      <div className="left">
+        <div className="filterItem">
+          <h2>Product Categories</h2>
+          {data?.map((item) => (
+            <div className="inputItem" key={item.id}>
+              <input
+                type="checkbox"
+                id={item.id}
+                value={item.id}
+                onChange={handleChange}
               />
-              <img
-                src={
-                  process.env.REACT_APP_UPLOAD_URL +
-                  data?.attributes?.img2?.data?.attributes?.url
-                }
-                alt=""
-                onClick={(e) => setSelectedImg("img2")}
-              />
+              <label htmlFor={item.id}>{item.attributes.title}</label>
             </div>
-            <div className="mainImg">
-              <img
-                src={
-                  process.env.REACT_APP_UPLOAD_URL +
-                  data?.attributes[selectedImg]?.data?.attributes?.url
-                }
-                alt=""
-              />
-            </div>
+          ))}
+        </div>
+        <div className="filterItem">
+          <h2>Filter by price</h2>
+          <div className="inputItem">
+            <span>0</span>
+            <input
+              type="range"
+              min={0}
+              max={1000}
+              onChange={(e) => setMaxPrice(e.target.value)}
+            />
+            <span>{maxPrice}</span>
           </div>
-          <div className="right">
-            <h1>{data?.attributes?.title}</h1>
-            <span className="price">${data?.attributes?.price}</span>
-            <p>{data?.attributes?.desc}</p>
-            <div className="quantity">
-              <button
-                onClick={() =>
-                  setQuantity((prev) => (prev === 1 ? 1 : prev - 1))
-                }
-              >
-                -
-              </button>
-              {quantity}
-              <button onClick={() => setQuantity((prev) => prev + 1)}>+</button>
-            </div>
-            <button
-              className="add"
-              onClick={() =>
-                dispatch(
-                  addToCart({
-                    id: data.id,
-                    title: data.attributes.title,
-                    desc: data.attributes.desc,
-                    price: data.attributes.price,
-                    img: data.attributes.img.data.attributes.url,
-                    quantity,
-                  })
-                )
-              }
-            >
-              <AddShoppingCartIcon /> ADD TO CART
-            </button>
-            <div className="links">
-              <div className="item">
-                <FavoriteBorderIcon /> ADD TO WISH LIST
-              </div>
-              <div className="item">
-                <BalanceIcon /> ADD TO COMPARE
-              </div>
-            </div>
-            <div className="info">
-              <span>Vendor: Polo</span>
-              <span>Product Type: T-Shirt</span>
-              <span>Tag: T-Shirt, Women, Top</span>
-            </div>
-            <hr />
-            <div className="info">
-              <span>DESCRIPTION</span>
-              <hr />
-              <span>ADDITIONAL INFORMATION</span>
-              <hr />
-              <span>FAQ</span>
-            </div>
+        </div>
+        <div className="filterItem">
+          <h2>Sort by</h2>
+          <div className="inputItem">
+            <input
+              type="radio"
+              id="asc"
+              value="asc"
+              name="price"
+              onChange={(e) => setSort("asc")}
+            />
+            <label htmlFor="asc">Price (Lowest first)</label>
           </div>
-        </>
-      )}
+          <div className="inputItem">
+            <input
+              type="radio"
+              id="desc"
+              value="desc"
+              name="price"
+              onChange={(e) => setSort("desc")}
+            />
+            <label htmlFor="desc">Price (Highest first)</label>
+          </div>
+        </div>
+      </div>
+      <div className="right">
+        <img
+          className="catImg"
+          src="https://images.pexels.com/photos/1074535/pexels-photo-1074535.jpeg?auto=compress&cs=tinysrgb&w=1600"
+          alt=""
+        />
+        <List catId={catId} maxPrice={maxPrice} sort={sort} subCats={selectedSubCats}/>
+      </div>
     </div>
   );
 };
 
-export default Product;
+export default Products;
