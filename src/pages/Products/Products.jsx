@@ -20,21 +20,21 @@ const Products = () => {
 
   const [selectedSubCats, setSelectedSubCats] = useState([])
 
-  const [categoryImage, setCategoryImage] = useState('');
+  const [categoryImage, setCategoryImage] = useState('https://images.unsplash.com/photo-1491382825904-a4c6dca98e8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
 
-  useEffect(() => {
-    const fetchCategoryImage = async () => {
-      try {
-        const res = await makeRequest.get(`/products/${catId}?populate=*`);
-        const categoryData = res.data;
-        setCategoryImage(`${process.env.REACT_APP_UPLOAD_URL + categoryData.data?.attributes?.img?.data.attributes.url}`);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchCategoryImage = async () => {
+  //     try {
+  //       const res = await makeRequest.get(`/categories/${catId}?populate=*`);
+  //       const categoryData = res.data;
+  //       setCategoryImage(`${process.env.REACT_APP_UPLOAD_URL + categoryData.data?.attributes?.img?.data.attributes.url}`);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
 
-    fetchCategoryImage();
-  }, []);
+  //   fetchCategoryImage();
+  // }, []);
 
   const handleChange = (e) => {
     const value = e.target.value;
