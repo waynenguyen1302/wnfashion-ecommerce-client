@@ -27,7 +27,7 @@ const Products = () => {
           <h2>Shop By</h2>
           {data?.map((item) => (
             <div className="inputItem" key={item.id}>
-              <Link className='link' to={`/products/${item.id}?populate=*`}>{item.attributes.title}</Link>
+              <Link className='link' to={`/categories/${item.id}`}>{item.attributes.title}</Link>
             </div>
           ))}          
         </div>

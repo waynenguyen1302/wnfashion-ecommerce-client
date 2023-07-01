@@ -1,4 +1,3 @@
-import { Children } from "react";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
@@ -7,11 +6,18 @@ import Product from "./pages/Product/Product";
 import Products from "./pages/Products/Products";
 import Store from "./pages/Store/Store";
 import "./App.scss"
+import { useRef } from "react";
+import { useScrollDirection } from "./hooks/useScrollDirection";
+
 
 const Layout = () => {
+  
+  const scrollContainerRef = useRef(null);
+  const scrollDirection = useScrollDirection(scrollContainerRef);
+
   return (
-    <div className="app">
-      <Navbar />
+    <div className="app" ref={scrollContainerRef} style={{ overflow: "scroll" }}>
+      <Navbar scrollDirection={scrollDirection} />
       <Outlet />
       <Footer />
     </div>

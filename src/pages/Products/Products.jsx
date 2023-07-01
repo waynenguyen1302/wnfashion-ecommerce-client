@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import List from "../../components/List/List";
 import useFetch from "../../hooks/useFetch";
@@ -8,18 +7,21 @@ import "./Products.scss";
 const Products = () => {
   const catId = parseInt(useParams().id);
   const [maxPrice, setMaxPrice] = useState(1000);
-  const [selectedPrice, setSelectedPrice] = useState(1000)
+  const [tempPrice, setTempPrice] = useState(0)
   const [sort, setSort] = useState("desc");
   const [selectedSubCats, setSelectedSubCats] = useState([]);
 
   const { data, loading, error } = useFetch(
-    `/products?[filters][categories][id][$eq]=${catId}`
+    `/sub-categories?[filters][categories][id][$eq]=${catId}`
   );
-
-  const handlePriceFilter = () => {
-    setMaxPrice(selectedPrice)
-  }
-
+  
+  //fetch data from category (to get category image)
+  const fetchCategory = useFetch(`/categories/${catId}?populate=*`);
+  const categoryData = fetchCategory.data;
+  const categoryError = fetchCategory.error;
+  const categoryLoading = fetchCategory.loading  
+  const imgUrl = categoryData?.attributes?.img?.data?.attributes?.formats?.large?.url;
+  
   const handleChange = (e) => {
     const value = e.target.value;
     const isChecked = e.target.checked;
@@ -30,8 +32,6 @@ const Products = () => {
         : selectedSubCats.filter((item) => item !== value)
     );
   };
-
-  
   
 
   return (
@@ -59,11 +59,11 @@ const Products = () => {
               type="range"
               min={0}
               max={1000}  
-              onChange={(e) => setSelectedPrice(e.target.value)}            
+              onChange={(e) => setTempPrice(e.target.value)}          
             />            
-            <span>{selectedPrice}</span>
-            <button onClick={handlePriceFilter}>Apply</button>
+            <span>{tempPrice}</span>            
           </div>
+          <button onClick={(e) => setMaxPrice(tempPrice)}>Apply</button>
         </div>
         <div className="filterItem">
           <h2>Sort by</h2>
@@ -90,15 +90,23 @@ const Products = () => {
         </div>
       </div>
       <div className="right">
-        <img
-          className="catImg"
-          src="https://images.pexels.com/photos/1074535/pexels-photo-1074535.jpeg?auto=compress&cs=tinysrgb&w=1600"
-          alt=""
-        />
+        { categoryData && imgUrl ?
+          
+            <img
+              className="catImg"
+              src={process.env.REACT_APP_UPLOAD_URL + imgUrl}
+              alt=""
+            />
+         :
+          <img src="" />
+        }        
         <List catId={catId} maxPrice={maxPrice} sort={sort} subCats={selectedSubCats}/>
       </div>
     </div>
   );
+
+  
 };
+
 
 export default Products;

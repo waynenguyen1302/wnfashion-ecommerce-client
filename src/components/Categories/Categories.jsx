@@ -7,15 +7,15 @@ const Category = () => {
     <div className='categories'>
       <div className="col">
         <div className="row">
-          <img src="https://images.unsplash.com/photo-1619086303291-0ef7699e4b31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=712&q=80" alt="" />
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="" />
           <button>
-            <Link className='link' to="/products/1">Sale</Link>
+            <Link className='link' to="/categories/5">Sale</Link>
           </button>
         </div>
         <div className="row">
-          <img src="https://images.unsplash.com/photo-1619785292559-a15caa28bde6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80" alt="" />
+          <img src="https://images.unsplash.com/photo-1490725263030-1f0521cec8ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1173&q=80" alt="" />
           <button>
-            <Link to="/products/1" className="link">
+            <Link to="/categories/1" className="link">
               Women
             </Link>
           </button>
@@ -23,10 +23,10 @@ const Category = () => {
       </div>
       <div className="col">
         <div className="row">
-          <img src="https://images.unsplash.com/photo-1568252542512-9fe8fe9c87bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=719&q=80" alt="" />
+          <img src="https://images.unsplash.com/photo-1509755512670-9e7af886e7e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=766&q=80" alt="" />
           <button>
-            <Link to="/products/1" className="link">
-              New Season
+            <Link to="/categories/6" className="link">
+              New Arrival
             </Link>
           </button>
         </div>
@@ -35,9 +35,9 @@ const Category = () => {
         <div className="row">
           <div className="col">
             <div className="row">
-              <img src="https://images.unsplash.com/photo-1627292441194-0280c19e74e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGZhc2hpb24lMjBtb2RlbHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="" />
+              <img src="https://images.unsplash.com/photo-1471119017026-179f1bb0a70e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1137&q=80" alt="" />
               <button>
-                <Link to="/products/1" className="link">
+                <Link to="/categories/2" className="link">
                   Men
                 </Link>
               </button>
@@ -45,9 +45,9 @@ const Category = () => {
           </div>
           <div className="col">
             <div className="row">
-              <img src="https://images.unsplash.com/photo-1584043720379-b56cd9199c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fG1lbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="" />
+              <img src="https://images.unsplash.com/photo-1589363360147-4f2d51541551?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="" />
               <button>
-                <Link to="/products/1" className="link">
+                <Link to="/categories/7" className="link">
                   Accessories
                 </Link>
               </button>
@@ -56,9 +56,9 @@ const Category = () => {
         </div>
         <div className="row">
           <div className="row">
-            <img src="https://images.unsplash.com/photo-1570545917537-873e36d4f64a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="" />
+            <img src="https://images.unsplash.com/photo-1498674202614-ac0172c6c61a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="" />
             <button>
-              <Link to="/products/3" className="link">
+              <Link to="/categories/3" className="link">
                 Children
               </Link>
             </button>

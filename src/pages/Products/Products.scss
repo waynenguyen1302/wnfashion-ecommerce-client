@@ -37,6 +37,41 @@
             height: 60vh;
             object-fit: cover;
             margin-bottom: 50px;
+            object-position: 50% 20%;
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .products {
+        .left {
+            .filterItem {
+                h2 {
+                    font-size: 22px;
+                }
+                .inputItem {
+                    font-size: 16px;
+
+                    label {
+                        font-size: 16px;
+                    }
+                }
+            }
+
+        }
+        .right {
+            .catImg {
+                height: 30vh;
+            }
+
+            .list {
+                .link {
+                    .card {
+                        width: 200px;
+                        height: 400px;
+                    }
+                }
+            }
         }
     }
 }
