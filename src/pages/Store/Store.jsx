@@ -15,7 +15,8 @@ const Products = () => {
 
   const [sort, setSort] = useState("asc")
 
-  const {data, loading, error} = useFetch(`/categories`)
+  const { data: productsData, loading: productsLoading, error: productsError } = useFetch("/products");
+  const { data: categoriesData, loading: categoriesLoading, error: categoriesError } = useFetch("/categories");
 
   const [selectedSubCats, setSelectedSubCats] = useState([])
 
@@ -25,9 +26,9 @@ const Products = () => {
       <div className="left">
         <div className="filterItem">
           <h2>Shop By</h2>
-          {data?.map((item) => (
-            <div className="inputItem" key={item.id}>
-              <Link className='link' to={`/categories/${item.id}`}>{item.attributes.title}</Link>
+          {categoriesData?.map((item) => (
+            <div className="inputItem" key={item._id}>
+              <Link className='link' to={`/categories/${item._id}`}>{item.name}</Link>
             </div>
           ))}          
         </div>
